@@ -1,14 +1,22 @@
 'use client'
-import React from 'react';
+import { ActionContext } from '@/context/context';
+import React, { useContext } from 'react';
 import { Legend, Pie, PieChart, Tooltip } from 'recharts';
 
-const data = [
-    { name: 'Text', value: 400, fill: '#0088FE' },
-    { name: 'Call', value: 300, fill: '#00C49F' },
-    { name: 'Video', value: 300, fill: '#FFBB28' },
-];
-
 const StatsPage = () => {
+    const { calls, texts, videos } = useContext(ActionContext);
+    console.log(calls)
+    console.log(texts)
+    console.log(videos)
+
+    const data = [
+        { name: 'Text', value: texts.length, fill: '#0088FE' },
+        { name: 'Call', value: calls.length, fill: '#00C49F' },
+        { name: 'Video', value: videos.length, fill: '#FFBB28' },
+    ];
+
+
+
     return (
         <div className='bg-[#F8FAFC] p-5'>
             <div className='container mx-auto'>
