@@ -15,9 +15,16 @@ const MobileMenu = ({ navLinks }) => {
                 }
             </div>
 
-            <div className={`absolute duration-500 ease-in-out ${menu ? '-left-23 top-10' : 'left-9 top-10'}`}>
+            <div
+                className={`
+      absolute top-10 right-0 transition-all duration-300
+      ${menu ? 'opacity-100 translate-y-0' : 'opacity-0 translate-x-2 pointer-events-none'}
+    `}
+            >
                 {
-                    navLinks.map((navLink, i) => <NavLinks key={i} navLink={navLink} />)
+                    navLinks.map((navLink, i) => (
+                        <NavLinks key={i} navLink={navLink} />
+                    ))
                 }
             </div>
         </div>

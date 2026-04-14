@@ -1,9 +1,11 @@
-import Image from "next/image";
+import Hero from "@/components/Pages/Home/HomePage/Hero/Hero";
+import Stats from "@/components/Pages/Home/HomePage/Stats/Stats";
 
 export default function Home() {
   return (
-    <div>
-
+    <div className="bg-[#F8FAFC]">
+      <Hero />
+      <Stats />
     </div>
   );
 }
