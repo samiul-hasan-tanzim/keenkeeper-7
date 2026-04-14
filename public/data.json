@@ -8,7 +8,7 @@
         "status": "overdue",
         "tags": [
             "university",
-            "close friend"
+            "friend"
         ],
         "bio": "Met during computer science studies at Dhaka University. We still talk about startups and cricket.",
         "goal": 14,
@@ -27,7 +27,7 @@
         ],
         "bio": "Colleague from my first job. She’s a UX designer and always gives great career advice.",
         "goal": 14,
-        "next_due_date": "2026-04-15"
+        "next_due_date": "2026-02-15"
     },
     {
         "id": 3,
@@ -42,7 +42,7 @@
         ],
         "bio": "Workout partner who keeps me consistent. We meet at the gym three times a week.",
         "goal": 10,
-        "next_due_date": "2026-04-18"
+        "next_due_date": "2026-02-18"
     },
     {
         "id": 4,
@@ -72,7 +72,7 @@
         ],
         "bio": "Neighborhood friend. We play football every weekend at the local field.",
         "goal": 14,
-        "next_due_date": "2026-04-20"
+        "next_due_date": "2026-02-20"
     },
     {
         "id": 6,
@@ -86,7 +86,7 @@
         ],
         "bio": "Family friend who recently started her own clothing business. I like supporting her work.",
         "goal": 14,
-        "next_due_date": "2026-04-14"
+        "next_due_date": "2026-02-14"
     },
     {
         "id": 7,
@@ -101,7 +101,7 @@
         ],
         "bio": "Travel buddy who loves photography. We’ve explored several places across Bangladesh together.",
         "goal": 10,
-        "next_due_date": "2026-04-22"
+        "next_due_date": "2026-02-22"
     },
     {
         "id": 8,
@@ -116,6 +116,6 @@
         ],
         "bio": "Met through a book club. We often exchange book recommendations and discuss novels.",
         "goal": 14,
-        "next_due_date": "2026-04-01"
+        "next_due_date": "2026-02-01"
     }
 ]
