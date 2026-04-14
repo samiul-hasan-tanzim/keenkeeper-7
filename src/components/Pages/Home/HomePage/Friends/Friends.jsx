@@ -2,7 +2,7 @@ import React from 'react';
 import FriendsCard from './FriendsCard';
 
 const Friends = async () => {
-    const friendsDataPromice = await fetch('http://localhost:3000/data.json')
+    const friendsDataPromice = await fetch('https://keenkeeper-7.vercel.app/data.json')
     const friends = await friendsDataPromice.json()
     return (
         <div className='container mx-auto mt-15'>
