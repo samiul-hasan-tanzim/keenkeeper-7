@@ -8,6 +8,7 @@ import { MdDelete } from 'react-icons/md';
 import { RiNotificationSnoozeLine } from 'react-icons/ri';
 import { TbPhoneCall } from 'react-icons/tb';
 import { toast } from 'react-toastify';
+import './detailes.css'
 
 const DetailesPage = async ({ params }) => {
     const { id } = await params;
@@ -16,6 +17,7 @@ const DetailesPage = async ({ params }) => {
         cache: 'no-store'
     });
     const friends = await res.json();
+    console.log(friends)
 
     const matchedFriend = friends.find(
         (friend) => friend.id === Number(id)
@@ -40,8 +42,8 @@ const DetailesPage = async ({ params }) => {
         <div className='bg-[#F8FAFC]'>
             {
                 matchedFriend ? (
-                    <div className='container mx-auto md:gap-30 flex flex-col md:flex-row md:justify-around p-5 md:p-20'>
-                        <div className='mb-10'>
+                    <div className='main-card container mx-auto md:gap-30 flex flex-col md:flex-row md:justify-around p-5 md:p-20'>
+                        <div className='mb-10 profile-card'>
                             <div className='min-h-80 md:w-90 md:min-h-fit flex flex-col justify-center items-center bg-white p-1 md:p-5 rounded shadow space-y-3'>
                                 <Image src={picture} alt={name} className='rounded-full' width={70} height={70}></Image>
                                 <h5>{name}</h5>
@@ -82,7 +84,7 @@ const DetailesPage = async ({ params }) => {
                                         <p>Goal(Days)</p>
                                     </div>
                                     <div className='bg-white p-5 md:p-10 rounded-xl shadow border border-black/1'>
-                                        <h3 className='text-3xl md:text-3xl font-bold'>{formatDate(next_due_date)}</h3>
+                                        <h3 className='text-2xl md:text-3xl font-bold'>{formatDate(next_due_date)}</h3>
                                         <p>Next Due</p>
                                     </div>
                                 </div>

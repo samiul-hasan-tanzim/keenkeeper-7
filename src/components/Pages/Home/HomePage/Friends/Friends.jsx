@@ -1,9 +1,13 @@
 import React from 'react';
 import FriendsCard from './FriendsCard';
+import { getFriends } from '@/lib/getFriends';
 
 const Friends = async () => {
-    const friendsDataPromice = await fetch('https://keenkeeper-7.vercel.app/data.json')
-    const friends = await friendsDataPromice.json()
+    // const friendsDataPromice = await fetch('https://keenkeeper-7.vercel.app/data.json')
+    // const friends = await friendsDataPromice.json()
+    const friends = await getFriends();
+    console.log(friends)
+
     return (
         <div className='container mx-auto mt-15'>
             <h3 className='text-center md:text-left text-3xl font-bold my-5'>Your Friends</h3>

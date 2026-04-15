@@ -4,7 +4,7 @@ import Stats from "@/components/Pages/Home/HomePage/Stats/Stats";
 
 export default function Home() {
   return (
-    <div className="bg-[#F8FAFC]">
+    <div className="bg-[#F8FAFC] pb-10">
       <Hero />
       <Stats />
       <p className="container mx-auto w-[95%] border border-t border-black/10 mt-10"></p>
