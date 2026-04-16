@@ -1,6 +1,6 @@
 'use client'
 import { ActionContext } from '@/context/context';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { IoVideocamOutline } from 'react-icons/io5';
 import { LuMessageSquareMore } from 'react-icons/lu';
 import { TbPhoneCall } from 'react-icons/tb';
@@ -9,34 +9,86 @@ const TimelinePage = () => {
     const [filter, setFilter] = useState('all');
     const { actions, calls, texts, videos } = useContext(ActionContext);
     console.log(calls)
+    const [sortingType, setSortingType] = useState('')
+    // const [sortOld, setSortOld] = useEffect(actions)
+    console.log(sortingType)
+    const [searchTerm, setSearchTerm] = useState('');
 
-    let filteredDara = []
+    let filteredData = [];
+
     if (filter === 'all') {
-        filteredDara = actions;
+        filteredData = [...actions];
     }
     else if (filter === 'text') {
-        filteredDara = texts;
+        filteredData = [...texts];
     }
     else if (filter === 'call') {
-        filteredDara = calls;
+        filteredData = [...calls];
     }
     else if (filter === 'video') {
-        filteredDara = videos;
+        filteredData = [...videos];
     }
 
+    if (sortingType === 'new') {
+        filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+    else if (sortingType === 'old') {
+        filteredData.sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+
+    // useEffect(() => {
+    //     if (sortingType === 'new') {
+
+    //     }
+    //     else if (sortingType === 'old') {
+
+    //     }
+    // }, [sortingType])
+
+    filteredData = filteredData.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <div className='bg-[#F8FAFC] p-5'>
             <div className='container mx-auto mt-10 space-y-5 '>
                 <h2 className='text-4xl font-bold'>Timeline</h2>
-                <div className='flex gap-5'>
-                    <label className="label">Filter Timeline</label>
-                    <select value={filter} onChange={(e) => setFilter(e.target.value)} className="select">
-                        <option value="all">All</option>
-                        <option value="text">Text</option>
-                        <option value="call">Call</option>
-                        <option value="video">Video</option>
-                    </select>
+                <div className='flex justify-between gap-5'>
+
+                    <div className='flex gap-5 w-5/12 md:w-full items-center'>
+                        <label className="label hidden md:block">Filter Timeline</label>
+                        <select onChange={(e) => setFilter(e.target.value)} className="select">
+                            <option value="all">All</option>
+                            <option value="text">Text</option>
+                            <option value="call">Call</option>
+                            <option value="video">Video</option>
+                        </select>
+                    </div>
+
+                    <div className='flex items-center'>
+                        <label className="input">
+                            <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <g
+                                    strokeLinejoin="round"
+                                    strokeLinecap="round"
+                                    strokeWidth="2.5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.3-4.3"></path>
+                                </g>
+                            </svg>
+                            <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="search" required placeholder="Search by Name" />
+                        </label>
+                        <div className="dropdown dropdown-bottom dropdown-end">
+                            <div tabIndex={0} role="button" className="btn m-1 whitespace-nowrap">Sort by</div>
+                            <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 min-w-30 p-2 shadow-sm">
+                                <li onClick={() => setSortingType('new')}><a>Newest</a></li>
+                                <li onClick={() => setSortingType('old')}><a>Oldest</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div className='space-y-5'>
 
@@ -46,7 +98,7 @@ const TimelinePage = () => {
 
                     {
                         actions.length > 0 ? (
-                            filteredDara.map((action, i) => (
+                            filteredData.map((action, i) => (
                                 <div key={i} className='flex items-center gap-3 bg-white shadow rounded p-3'>
                                     <div>
                                         {
@@ -66,7 +118,7 @@ const TimelinePage = () => {
                                             </span>
                                             {action.name}
                                         </p>
-                                        <p>March 30, 2026</p>
+                                        <p>{action.date}</p>
                                     </div>
                                 </div>
                             ))

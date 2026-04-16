@@ -47,19 +47,35 @@ const QuickActions = ({ name, date }) => {
     // console.log(texts)
     // console.log(videos)
 
+    const handelClick = (p) => {
+        let position = "top-right";
+
+        if (window.innerWidth >= 768) {
+            position = "top-center";
+        }
+
+        toast.success(`${p} with ${name}`, { position });
+        handleAction('${p}');
+        if (p === 'call') handleCall();
+        if (p === 'text') handleText();
+        if (p === 'video') handleVideo();
+        addAction(name, `${p}`, date)
+    }
+
     return (
         <div className='text-center grid grid-cols-2 md:grid-cols-3 gap-5'>
-            <div onClick={() => { toast.success(`Call with ${name}`); handleAction('call'); handleCall(); addAction(name, 'call', date) }} className='bg-[#F8FAFC] flex flex-col items-center p-5 rounded-xl cursor-pointer'>
+            <div onClick={() => handelClick('call')} className='bg-[#F8FAFC] flex flex-col items-center p-5 rounded-xl cursor-pointer'>
                 <TbPhoneCall size={20} />
                 <p>Call</p>
             </div>
 
-            <div onClick={() => { toast.success(`Text with ${name}`); handleAction('text'); handleText(); addAction(name, 'text', date) }} className='bg-[#F8FAFC] flex flex-col items-center p-5 rounded-xl cursor-pointer'>
+            {/* <div onClick={() => { toast.success(`Text with ${name}`); handleAction('text'); handleText(); addAction(name, 'text', date) }} className='bg-[#F8FAFC] flex flex-col items-center p-5 rounded-xl cursor-pointer'> */}
+            <div onClick={() => handelClick('text')} className='bg-[#F8FAFC] flex flex-col items-center p-5 rounded-xl cursor-pointer'>
                 <LuMessageSquareMore size={20} />
                 <p>Text</p>
             </div>
 
-            <div onClick={() => { toast.success(`Video with ${name}`); handleAction('video'); handleVideo(); addAction(name, 'video', date) }} className='bg-[#F8FAFC] flex flex-col items-center p-5 rounded-xl cursor-pointer'>
+            <div onClick={() => handelClick('video')} className='bg-[#F8FAFC] flex flex-col items-center p-5 rounded-xl cursor-pointer'>
                 <IoVideocamOutline size={20} />
                 <p>Video</p>
             </div>

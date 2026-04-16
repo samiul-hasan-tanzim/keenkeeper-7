@@ -3,9 +3,9 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className='bg-[#244D3F] flex flex-col items-center p-10 pt-15 text-center space-y-8'>
+        <div className='bg-[#244D3F] flex flex-col items-center p-5 md:p-10 pt-15 text-center space-y-8'>
             <div className='space-y-3'>
-                <h2 className='text-6xl font-bold text-white'>KeenKeeper</h2>
+                <h2 className='text-4xl md:text-6xl font-bold text-white'>KeenKeeper</h2>
                 <p className='text-white/70'>Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.</p>
             </div>
             <div className='space-y-3'>
@@ -17,9 +17,9 @@ const Footer = () => {
                 </div>
             </div>
             <p className='border border-b border-gray-500 container w-full '></p>
-            <div className='container flex justify-between w-full text-white'>
+            <div className='container flex flex-col-reverse md:flex-row md:justify-between items-center w-full text-white'>
                 <p><small>© 2026 KeenKeeper. All rights reserved.</small></p>
-                <div className='flex gap-10'>
+                <div className='flex justify-between my-5 gap-10 whitespace-nowrap'>
                     <p>Privacy Policy</p>
                     <p>Terms of Service</p>
                     <p>Cookies</p>
